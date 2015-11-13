@@ -1,0 +1,8 @@
+<template>
+	Search: <input type="text" value.bind="searchTerm" placeholder="Enter search term...">
+	<template repeat.for="vm of possibleViewModelNames"> 
+		<input type="radio" name="type" value.bind="vm" checked.bind="$parent.searchResultViewModelName" >${vm}</input>
+	</template>
+	<button click.trigger="searchClicked()">Search</button>
+	<compose repeat.for="waterRight of searchResults" view-model.bind='searchResultViewModelName' model.bind="waterRight"></compose>
+</template>
