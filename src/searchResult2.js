@@ -1,5 +1,7 @@
 export class SearchResult {
-	waterRight = {};
+	constructor() {
+		this.waterRight = {};		
+	}
 
 	activate(waterRight) {
 		this.waterRight = waterRight;

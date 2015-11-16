@@ -4,34 +4,26 @@ import 'fetch';
 
 @inject(HttpClient)
 export class App {
-
-	searchResults = [];
-	possibleViewModelNames = ['searchResult', 'searchResult2'];
-	searchTerm = "";
-
 	constructor(http) {
 		this.http = http;
 		this.http.configure(config => {
 			config
 				.useStandardConfiguration()
 				.withBaseUrl('http://localhost:65064/')
-		});	
+		});
+		
+		this.searchResults = [];
+		this.possibleViewModelNames = ['searchResult', 'searchResult2'];
+		this.searchTerm = "";
+		this.searchResultViewModelName = 'searchResult';
 	}
 
 	searchClicked() {
-		this.searchResults = [];
+		this.searchResults.length = 0;
 		this.http.fetch(`?searchTerm=${this.searchTerm}`)
 			.then(response => response.json())
 			.then(searchResults => {
 				this.searchResults = searchResults;
 			});		
-	}
-
-	get searchResultViewModelName() {
-		return this._searchResultViewModelName;
-	}
-
-	set searchResultViewModelName(value) {
-		this._searchResultViewModelName = value;
 	}
 }
