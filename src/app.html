@@ -4,10 +4,9 @@
 		<input type="radio" name="type" value.bind="vm" checked.bind="$parent.searchResultViewModelName" >${vm}</input>
 	</template>
 	<button click.trigger="searchClicked()">Search</button>
-	<ol>
-		<li repeat.for="waterRight of searchResults">
-			<compose  view-model.bind='searchResultViewModelName' model.bind="waterRight"></compose>
+	<ul>
+		<li repeat.for="searchResult of searchResults"  >
+			<compose  view-model.bind='searchResultViewModelName' model.bind="{parent: $parent}"></compose>
 		</li>
-	</ol>
-	
+	</ul>
 </template>

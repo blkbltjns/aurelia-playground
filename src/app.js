@@ -24,6 +24,13 @@ export class App {
 			.then(response => response.json())
 			.then(searchResults => {
 				this.searchResults = searchResults;
-			});		
+			});
+	}
+	
+	select(toSelect) {
+		if (this._selected) {
+			this._selected.isSelected = false;
+		}
+		toSelect.isSelected = true;
 	}
 }
