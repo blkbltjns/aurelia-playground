@@ -6,7 +6,7 @@
 	<button click.trigger="searchClicked()">Search</button>
 	<ul>
 		<li repeat.for="searchResult of searchResults"  >
-			<compose  view-model.bind='searchResultViewModelName' model.bind="{parent: $parent}"></compose>
+			<compose  view-model.bind='searchResultViewModelName' model.bind="{'parent': $parent}"></compose>
 		</li>
 	</ul>
 </template>

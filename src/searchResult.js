@@ -7,8 +7,8 @@ export class SearchResult {
 		this._styleString = "";
 	}
 
-	activate(waterRight) {
-		this.waterRight = waterRight;
+	activate(searchResult) {
+		this.searchResult = searchResult;
 	}
 	
 	bind(bindingContext) {
