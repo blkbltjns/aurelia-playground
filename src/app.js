@@ -1,10 +1,12 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
+import * as toastr from 'toastr';
 import 'fetch';
 
 @inject(HttpClient)
 export class App {
 	constructor(http) {
+		this.selfReference = this;
 		this.http = http;
 		this.http.configure(config => {
 			config
@@ -24,6 +26,7 @@ export class App {
 			.then(response => response.json())
 			.then(searchResults => {
 				this.searchResults = searchResults;
+				toastr.success(`Returned ${searchResults.length} records`);
 			});
 	}
 	
@@ -32,5 +35,6 @@ export class App {
 			this._selected.isSelected = false;
 		}
 		toSelect.isSelected = true;
+		this._selected = toSelect;
 	}
 }

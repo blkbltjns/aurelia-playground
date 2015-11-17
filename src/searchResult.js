@@ -1,4 +1,5 @@
 import {computedFrom} from 'aurelia-framework';
+import {bindable} from 'aurelia-framework';
 
 export class SearchResult {
 	constructor() {
@@ -7,16 +8,14 @@ export class SearchResult {
 		this._styleString = "";
 	}
 
-	activate(waterRight) {
-		this.waterRight = waterRight;
+	activate(data) {
+		this.waterRight = data.searchResult;
+		this.$parent = data.parent;
 	}
 	
-	bind(bindingContext) {
-    	this.parent = bindingContext;
-	}
-	
+
 	mouseDown() {
-		this.parent.select(this);
+		this.$parent.select(this);
 	}
 	
 	get isSelected() {
@@ -26,10 +25,10 @@ export class SearchResult {
 	set isSelected(value) {
 		this._isSelected = value;
 		if (value) {
-			this._styleString = "background-color: yellow";
+			this._styleString = "display: inline-block; background-color: yellow";
 		}
 		else {
-			this._styleString = "background-color: white";
+			this._styleString = "display: inline-block; background-color: white";
 		}
 	}
 	
