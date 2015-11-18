@@ -1,5 +1,4 @@
 import {computedFrom} from 'aurelia-framework';
-import {bindable} from 'aurelia-framework';
 
 export class SearchResult {
 	constructor() {
