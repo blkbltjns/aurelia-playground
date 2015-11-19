@@ -4,17 +4,16 @@ export class SearchResult {
 	constructor() {
 		this.waterRight = {};
 		this._isSelected = false;
-		this._styleString = "";
+		this.styleString = "display: inline-block; background-color: white";
 	}
 
 	activate(data) {
 		this.waterRight = data.searchResult;
-		this.$parent = data.parent;
+		this.parent = data.parent;
 	}
-	
 
 	mouseDown() {
-		this.$parent.select(this);
+		this.parent.select(this);
 	}
 	
 	get isSelected() {
@@ -24,15 +23,10 @@ export class SearchResult {
 	set isSelected(value) {
 		this._isSelected = value;
 		if (value) {
-			this._styleString = "display: inline-block; background-color: yellow";
+			this.styleString = "display: inline-block; background-color: yellow";
 		}
 		else {
-			this._styleString = "display: inline-block; background-color: white";
+			this.styleString = "display: inline-block; background-color: white";
 		}
-	}
-	
-	@computedFrom('isSelected')
-	get styleString() {
-		return this._styleString;
 	}
 }

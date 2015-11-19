@@ -1,7 +1,7 @@
 <template>
 	Search: <input type="text" value.bind="searchTerm" placeholder="Enter search term...">
 	<template repeat.for="vm of possibleViewModelNames"> 
-		<input type="radio" name="type" value.bind="vm" checked.bind="$parent.searchResultViewModelName" >${vm}</input>
+		<input type="radio" name="type" value.bind="vm" checked.bind="$parent.searchResultViewModelName" >${vm} 
 	</template>
 	<button click.trigger="searchClicked()">Search</button>
 	<ul>

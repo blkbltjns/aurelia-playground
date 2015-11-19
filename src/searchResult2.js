@@ -1,9 +1,11 @@
-export class SearchResult {
-	constructor() {
-		this.waterRight = {};		
-	}
+import {SearchResult} from 'searchResult';
 
-	activate(waterRight) {
-		this.waterRight = waterRight;
+export class SearchResult2 extends SearchResult {
+	constructor() {
+		super();
+	}
+	
+	get someOtherProperty() {
+		return "Some other property";
 	}
 }

@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
+import 'fetch'; // needed for IE fetch
 import * as toastr from 'toastr';
-import 'fetch';
 
 @inject(HttpClient)
 export class App {
@@ -9,19 +9,18 @@ export class App {
 		this.selfReference = this;
 		this.http = http;
 		this.http.configure(config => {
-			config
-				.useStandardConfiguration()
-				.withBaseUrl('http://localhost:65064/')
+			config.useStandardConfiguration()
+				  .withBaseUrl('http://localhost:65064/')
 		});
 		
 		this.searchResults = [];
 		this.possibleViewModelNames = ['searchResult', 'searchResult2'];
 		this.searchTerm = "";
-		this.searchResultViewModelName = 'searchResult';
+		this.searchResultViewModelName = this.possibleViewModelNames[1];
 	}
 
 	searchClicked() {
-		this.searchResults.length = 0;
+		this.searchResults = [];
 		this.http.fetch(`?searchTerm=${this.searchTerm}`)
 			.then(response => response.json())
 			.then(searchResults => {
