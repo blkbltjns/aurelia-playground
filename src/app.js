@@ -27,6 +27,7 @@ export class App {
 				this.searchResults = searchResults;
 				toastr.success(`Returned ${searchResults.length} records`);
 			});
+	
 	}
 	
 	select(toSelect) {
