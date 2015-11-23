@@ -10,7 +10,7 @@ export class App {
 		this.http = http;
 		this.http.configure(config => {
 			config.useStandardConfiguration()
-				  .withBaseUrl('http://localhost:65064/')
+				  .withBaseUrl('http://applicationserver:150/')
 		});
 		
 		this.searchResults = [];
